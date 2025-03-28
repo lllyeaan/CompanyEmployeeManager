@@ -32,6 +32,12 @@ public abstract class Karyawan
     }
 
     public abstract double HitungGaji();
+
+    public void TampilkanInfo()
+    {
+        Console.WriteLine($"Nama: {nama}, ID: {id}, Gaji Akhir: {HitungGaji()}");
+    }
+
 }
 
 public class KaryawanTetap : Karyawan
@@ -71,8 +77,19 @@ class Program
 {
     static void Main()
     {
-        Console.WriteLine("Pilih jenis karyawan: \n(1) Tetap \n(2) Kontrak \n(3) Magang");
-        int pilihan = int.Parse(Console.ReadLine());
+        Console.WriteLine("Sistem Manajemen Karyawan");
+        Console.WriteLine();
+
+        Console.WriteLine("Pilih jenis karyawan: \n(1) Karyawan Tetap \n(2) Karyawan Kontrak \n(3) Karyawan Magang");
+
+        Console.Write("Masukkan pilihan =  ");
+        int pilihan = int.Parse(Console.ReadLine()); 
+
+        if (pilihan < 1 || pilihan > 3)
+        {
+            Console.WriteLine("Pilihan tidak valid.");
+            return;
+        }
 
         Console.Write("Masukkan Nama: ");
         string nama = Console.ReadLine();
@@ -96,14 +113,13 @@ class Program
             case 3:
                 karyawan = new KaryawanMagang(nama, id, gajiPokok);
                 break;
-            default:
-                Console.WriteLine("Pilihan tidak valid.");
-                return;
+
         }
 
-        if (karyawan != null)
-        {
-            Console.WriteLine($"Total Gaji {karyawan.nama} ({karyawan.id}): {karyawan.HitungGaji()}");
-        }
+        //if(karyawan != null)
+        //{
+            karyawan.TampilkanInfo();
+        //}
+        
     }
 }
