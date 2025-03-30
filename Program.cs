@@ -4,13 +4,13 @@ public abstract class Karyawan
 {
     private string Nama;
     private string Id;
-    private double Gajipokok;
+    private double GajiPokok;
 
     public Karyawan(string Nama, string Id, double GajiPokok)
     {
         this.Nama = Nama;
         this.Id = Id;
-        this.Gajipokok = GajiPokok;
+        this.GajiPokok = GajiPokok;
     }
 
     public string nama
@@ -25,17 +25,22 @@ public abstract class Karyawan
         set { Id = value; }
     }
 
-    public double gajipokok
+    public double gajiPokok
     {
-        get { return Gajipokok; }
-        set { Gajipokok = value; }
+        get { return GajiPokok; }
+        set { GajiPokok = value; }
     }
 
     public abstract double HitungGaji();
 
     public void TampilkanInfo()
     {
-        Console.WriteLine($"Nama: {nama}, ID: {id}, Gaji Akhir: {HitungGaji()}");
+        Console.WriteLine(".____________________.");
+        Console.WriteLine("| INFORMASI KARYAWAN |");
+        Console.WriteLine("|____________________|");
+        Console.WriteLine($"ID: {id}");
+        Console.WriteLine($"Nama: {nama}");
+        Console.WriteLine($"Gaji Akhir: {HitungGaji()}");
     }
 
 }
@@ -47,7 +52,7 @@ public class KaryawanTetap : Karyawan
 
     public override double HitungGaji()
     {
-        return gajipokok + 500000;
+        return gajiPokok + 500000;
     }
 }
 
@@ -58,7 +63,7 @@ public class KaryawanKontrak : Karyawan
 
     public override double HitungGaji()
     {
-        return gajipokok - 200000;
+        return gajiPokok - 200000;
     }
 }
 
@@ -69,7 +74,7 @@ public class KaryawanMagang : Karyawan
 
     public override double HitungGaji()
     {
-        return gajipokok;
+        return gajiPokok;
     }
 }
 
@@ -91,11 +96,11 @@ class Program
             return;
         }
 
-        Console.Write("Masukkan Nama: ");
-        string nama = Console.ReadLine();
-
         Console.Write("Masukkan ID: ");
         string id = Console.ReadLine();
+
+        Console.Write("Masukkan Nama: ");
+        string nama = Console.ReadLine();
 
         Console.Write("Masukkan Gaji Pokok: ");
         double gajiPokok = double.Parse(Console.ReadLine());
@@ -116,10 +121,9 @@ class Program
 
         }
 
-        //if(karyawan != null)
-        //{
+       
             karyawan.TampilkanInfo();
-        //}
+
         
     }
 }
