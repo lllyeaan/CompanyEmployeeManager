@@ -85,9 +85,14 @@ class Program
         Console.WriteLine("Sistem Manajemen Karyawan");
         Console.WriteLine();
 
-        Console.WriteLine("Pilih jenis karyawan: \n(1) Karyawan Tetap \n(2) Karyawan Kontrak \n(3) Karyawan Magang");
+        Console.WriteLine("- Pilih jenis karyawan -");
+        Console.WriteLine("  1. Karyawan Tetap ");
+        Console.WriteLine("  2. Karyawan Kontrak");
+        Console.WriteLine("  3. Karyawan Magang");
 
-        Console.Write("Masukkan pilihan =  ");
+        Console.WriteLine();
+
+        Console.Write("Masukkan pilihan :  ");
         int pilihan = int.Parse(Console.ReadLine()); 
 
         if (pilihan < 1 || pilihan > 3)
@@ -121,9 +126,9 @@ class Program
 
         }
 
-       
-            karyawan.TampilkanInfo();
 
-        
+        karyawan.TampilkanInfo();
+
+
     }
 }
