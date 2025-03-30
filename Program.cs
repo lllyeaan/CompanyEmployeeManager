@@ -2,27 +2,28 @@
 
 public abstract class Karyawan
 {
-    private string Nama;
+
     private string Id;
+    private string Nama;
     private double GajiPokok;
 
-    public Karyawan(string Nama, string Id, double GajiPokok)
+    public Karyawan(string Id, string Nama, double GajiPokok)
     {
         this.Nama = Nama;
         this.Id = Id;
         this.GajiPokok = GajiPokok;
     }
 
-    public string nama
-    {
-        get { return Nama; }
-        set { Nama = value; }
-    }
-
     public string id
     {
         get { return Id; }
         set { Id = value; }
+    }
+
+    public string nama
+    {
+        get { return Nama; }
+        set { Nama = value; }
     }
 
     public double gajiPokok
@@ -38,17 +39,19 @@ public abstract class Karyawan
         Console.WriteLine(".____________________.");
         Console.WriteLine("| INFORMASI KARYAWAN |");
         Console.WriteLine("|____________________|");
+        Console.WriteLine();
         Console.WriteLine($"ID: {id}");
         Console.WriteLine($"Nama: {nama}");
-        Console.WriteLine($"Gaji Akhir: {HitungGaji()}");
+        Console.WriteLine($"Gaji Pokok: {GajiPokok}");
+        Console.WriteLine($"Gaji Akhir: {HitungGaji()}"); 
     }
 
 }
 
 public class KaryawanTetap : Karyawan
 {
-    public KaryawanTetap(string nama, string id, double gajiPokok)
-    : base(nama, id, gajiPokok) { }
+    public KaryawanTetap(string id, string nama, double gajiPokok)
+    : base(id, nama, gajiPokok) { }
 
     public override double HitungGaji()
     {
@@ -58,8 +61,8 @@ public class KaryawanTetap : Karyawan
 
 public class KaryawanKontrak : Karyawan
 {
-    public KaryawanKontrak(string nama, string id, double gajiPokok)
-    : base(nama, id, gajiPokok) { }
+    public KaryawanKontrak(string id, string nama, double gajiPokok)
+    : base(id, nama, gajiPokok) { }
 
     public override double HitungGaji()
     {
@@ -69,8 +72,8 @@ public class KaryawanKontrak : Karyawan
 
 public class KaryawanMagang : Karyawan
 {
-    public KaryawanMagang(string nama, string id, double gajiPokok)
-    : base(nama, id, gajiPokok) { }
+    public KaryawanMagang(string id, string nama, double gajiPokok)
+    : base(id, nama, gajiPokok) { }
 
     public override double HitungGaji()
     {
@@ -115,13 +118,13 @@ class Program
         switch (pilihan)
         {
             case 1:
-                karyawan = new KaryawanTetap(nama, id, gajiPokok);
+                karyawan = new KaryawanTetap(id, nama, gajiPokok);
                 break;
             case 2:
-                karyawan = new KaryawanKontrak(nama, id, gajiPokok);
+                karyawan = new KaryawanKontrak(id, nama, gajiPokok);
                 break;
             case 3:
-                karyawan = new KaryawanMagang(nama, id, gajiPokok);
+                karyawan = new KaryawanMagang(id, nama, gajiPokok);
                 break;
 
         }
