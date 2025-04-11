@@ -7,43 +7,33 @@ public abstract class Karyawan
     private string Nama;
     private double GajiPokok;
 
-    public Karyawan(string Id, string Nama, double GajiPokok)
+    public Karyawan(string id, string nama, double gajiPokok)
     {
-        this.Nama = Nama;
-        this.Id = Id;
-        this.GajiPokok = GajiPokok;
+        SetId(id);
+        SetNama(nama);
+        SetGajiPokok(gajiPokok);
     }
 
-    public string id
-    {
-        get { return Id; }
-        set { Id = value; }
-    }
+    public string GetId() { return Id; }
+    public void SetId(string value) { Id = value; }
 
-    public string nama
-    {
-        get { return Nama; }
-        set { Nama = value; }
-    }
+    public string GetNama() { return Nama; }
+    public void SetNama(string value) { Nama = value; }
 
-    public double gajiPokok
-    {
-        get { return GajiPokok; }
-        set { GajiPokok = value; }
-    }
+    public double GetGajiPokok() { return GajiPokok; }
+    public void SetGajiPokok(double value) { GajiPokok = value; }
 
     public abstract double HitungGaji();
 
     public void TampilkanInfo()
     {
-        Console.WriteLine(".____________________.");
-        Console.WriteLine("| INFORMASI KARYAWAN |");
-        Console.WriteLine("|____________________|");
         Console.WriteLine();
-        Console.WriteLine($"ID: {id}");
-        Console.WriteLine($"Nama: {nama}");
-        Console.WriteLine($"Gaji Pokok: {GajiPokok}");
-        Console.WriteLine($"Gaji Akhir: {HitungGaji()}"); 
+        Console.WriteLine("- INFORMASI KARYAWAN -");
+        Console.WriteLine();
+        Console.WriteLine($"ID: {GetId()}");
+        Console.WriteLine($"Nama: {GetNama()}");
+        Console.WriteLine($"Gaji Pokok: {GetGajiPokok()}");
+        Console.WriteLine($"Gaji Akhir: {HitungGaji()}");
     }
 
 }
@@ -55,7 +45,7 @@ public class KaryawanTetap : Karyawan
 
     public override double HitungGaji()
     {
-        return gajiPokok + 500000;
+        return GetGajiPokok() + 500000;
     }
 }
 
@@ -66,7 +56,7 @@ public class KaryawanKontrak : Karyawan
 
     public override double HitungGaji()
     {
-        return gajiPokok - 200000;
+        return GetGajiPokok() - 200000;
     }
 }
 
@@ -77,7 +67,7 @@ public class KaryawanMagang : Karyawan
 
     public override double HitungGaji()
     {
-        return gajiPokok;
+        return GetGajiPokok();
     }
 }
 
@@ -96,7 +86,7 @@ class Program
         Console.WriteLine();
 
         Console.Write("Masukkan pilihan :  ");
-        int pilihan = int.Parse(Console.ReadLine()); 
+        int pilihan = int.Parse(Console.ReadLine());
 
         if (pilihan < 1 || pilihan > 3)
         {
@@ -129,9 +119,6 @@ class Program
 
         }
 
-
         karyawan.TampilkanInfo();
-
-
     }
 }
